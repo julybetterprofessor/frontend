@@ -1,44 +1,64 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import axios from 'axios'
 
 export const Form = (props) => {
 
 
     //setting states for each input
     const [inputUser, setInputUser] = useState({
-          email: '',
+        username: '',
           password: '',
     });
+    const {username, password} = inputUser; 
       //form component to handle onChange
     const handleChange = (event => {
         setInputUser({...inputUser, [event.target.name]: event.target.value})
     })
 
     //funciton for onSubmit + creates obj. ONSUBMIT FUNCTION
-    const handleSubmit = event => {
-        event.preventDefault();
-        console.log('This is my input user and password', inputUser)
-        setInputUser({email: '', password: '',})
-    }
+    const onSubmit = async evt => {
+      evt.preventDefault();
+      const user = {
+          username,
+          password
+      };
+      try {
+          const config = {
+              headers: {
+                  'Content-Type': 'application/json'
+              }
+          };
+          const body = JSON.stringify(user);
+          const res = await axios.post('https://better-professor-app-backend.herokuapp.com/api/login', body, config);
+          console.log(res);
+      } catch (err) {
+          console.error(err.response.data);
+      }
+  }
+
+    // const handleSubmit = event => {
+    //     event.preventDefault();
+    //     console.log('This is my input user and password', inputUser)
+    //     setInputUser({username: '', password: '',})
+    // }
 
 
     return (
         <div className="App">
-        <Styleform><form onSubmit={handleSubmit}>
+        <Styleform><form onSubmit={(evt) =>onSubmit(evt)}>
           <label>
-            <div className = 'inputEmail'>
-            E-MAIL :
+            <div className = 'inputUser'>
+            Username :
               <input 
-              name='email'
-              type='email'
-              placeholder='Enter Email'
-              value={inputUser.email}
-
+              name='username'
+              type='text'
+              placeholder='Enter User'
+              value={username}
 
                 //see handChange function for details
-                onChange={handleChange}
+                onChange={(evt) =>handleChange(evt)}
                 
-
 
               />
               </div>
@@ -48,14 +68,15 @@ export const Form = (props) => {
               name='password'
               type='password'
               placeholder='Enter Password'
-              value={inputUser.password}
+              value={password}
               //see handChange function for details
-              onChange={handleChange}
+              onChange={(evt) =>handleChange(evt)}
               
               />
               </div>
           </label>
-          <button type='submit'>Submit</button>
+          {/* <button type='submit'>Submit</button> */}
+          <input type="submit" className="btn btn-primary" value="login" />
         </form> </Styleform>
     </div>
     );
