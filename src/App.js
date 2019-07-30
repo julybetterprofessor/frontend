@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import Register from './components/register/Register';
 import './App.css';
 import { Form } from './components/Form';
+import { Route } from 'react-router-dom';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route exact path='/register' component={Register} />
       </Switch>
        <Form/>
+        <Route exact path='/form' component={ Form } />
     </div>
   );
 }
