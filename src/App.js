@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
        <Form/>
-        <Route exact path='/form' component={Form} />
+        <Route exact path='/form' component={ Form } />
     </div>
   );
 }
