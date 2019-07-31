@@ -93,5 +93,3 @@ const Styleform = styled.div`
   border-radius: 10px;
   padding: 10%
   font-size: 140%;`
-
-
