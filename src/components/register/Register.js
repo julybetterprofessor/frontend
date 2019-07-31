@@ -50,7 +50,7 @@ const Register = () => {
                         placeholder="Username"
                         name="username"
                         value={username}
-                        onChange={e => onChange(e)}
+                        onChange={evt => onChange(evt)}
                         required />
                 </div>
                 <div className="form-group">
@@ -60,7 +60,7 @@ const Register = () => {
                         name="password"
                         value={password}
                         minLength="6"
-                        onChange={e => onChange(e)}
+                        onChange={evt => onChange(evt)}
                         required />
                 </div>
                 <input type="submit" className="btn btn-primary" value="Register" />
