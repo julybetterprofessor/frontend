@@ -22,7 +22,8 @@ const SignIn = ({setAuth}) => {
                 }
             };
             const body = JSON.stringify(user);
-            await axios.post('https://better-professor-app-backend.herokuapp.com/api/login', body, config);
+            const {data} = await axios.post('https://better-professor-app-backend.herokuapp.com/api/login', body, config);
+            localStorage.setItem('token', data.token);
             setAuth(true);
         } catch (err) {
             console.error(err);
