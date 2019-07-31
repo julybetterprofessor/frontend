@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { Route, Switch } from 'react-router-dom';
-import StudentCard from './StudentCard'
-import StudentForm from './StudentForm'
-import axios from 'axios'
+import React, { useState } from 'react';
+import StudentCard from './StudentCard';
+import StudentForm from './StudentForm';
 
 
 export const StudentApp= () => {

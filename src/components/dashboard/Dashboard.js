@@ -4,7 +4,6 @@ import axios from 'axios';
 
 const Dashboard = () => {
     const getStudents = async () => {
-        console.log('getStudents has been run!');
         const config = {
           headers: {
             authorization: localStorage.getItem("token")
