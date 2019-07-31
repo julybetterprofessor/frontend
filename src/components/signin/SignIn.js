@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import axios from 'axios';
-import './SignIn.sass';
+import '../../App.sass';
 
 const SignIn = ({setAuth}) => {
     const [inputUser, setInputUser] = useState({
@@ -30,8 +30,9 @@ const SignIn = ({setAuth}) => {
     }
 
     return (
-        <>
-            <h1 className="large text-primary">Sign In</h1>
+        <div className="formBorder">
+            <h1 className="large text-primary">Sign In </h1>
+            <p>Sign in below to access your dashboard. Don’t have an account yet? <a className="createAcc"href="http://localhost:3000/register">Create one here.</a></p>
             <form className="form" onSubmit={evt => handleSubmit(evt)}>
                 <div className="form-group">
                     <input 
@@ -54,7 +55,7 @@ const SignIn = ({setAuth}) => {
                 </div>
                 <input type="submit" className="btn btn-primary" value="Log In" />
             </form>
-        </>
+        </div>
     );
 };
 
