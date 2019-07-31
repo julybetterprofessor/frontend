@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import '../../App.sass';
 import './Register.sass';
 
 const Register = () => {
@@ -42,7 +41,7 @@ const Register = () => {
     return (
         <div className="formBorder">
             <h1 className="large text-primary">Sign Up</h1>
-            <p className="lead"><i className="fas fa-user"></i> Create Your Account</p>
+            <p className="lead"><i className="fas fa-user"></i> Create your account</p>
             <form className="form" onSubmit={evt => onSubmit(evt)}>
                 <div className="form-group">
                     <input
@@ -63,7 +62,7 @@ const Register = () => {
                         onChange={evt => onChange(evt)}
                         required />
                 </div>
-                <input type="submit" className="btn btn-primary" value="Register" />
+                <input type="submit" className="btn btn-primary" value="Sign Up" />
             </form>
         </div>
     );

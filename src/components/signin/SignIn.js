@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
+import {Link} from 'react-router-dom';
 import axios from 'axios';
-import '../../App.sass';
 
 const SignIn = ({setAuth}) => {
     const [inputUser, setInputUser] = useState({
@@ -32,8 +32,11 @@ const SignIn = ({setAuth}) => {
 
     return (
         <div className="formBorder">
-            <h1 className="large text-primary">Sign In </h1>
-            <p>Sign in below to access your dashboard. Don’t have an account yet? <a className="createAcc"href="http://localhost:3000/register">Create one here.</a></p>
+            <h1 className="large text-primary">Log In</h1>
+            <p>
+                Sign in below to access your dashboard. Don’t have an account yet? 
+                <Link className="createAcc" to='/register' > Create one here.</Link>
+            </p>
             <form className="form" onSubmit={evt => handleSubmit(evt)}>
                 <div className="form-group">
                     <input 
