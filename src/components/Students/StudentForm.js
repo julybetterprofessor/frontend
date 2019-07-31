@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 //creating form for students to input information
 //please use StudentForm to render form on page
-export const StudentForm = (props) => {
-    const { setStudents } =props;
-    //use state takes these empty values until manually adding values
+export const StudentForm = () => {
     const [student, setStudent] = useState({
-        // id: '',
         firstname: '',
         lastname: '',
         email:'',
-
     });
+
+    const {
+        firstname,
+        lastname,
+        email
+    } = student;
 
     //setting target values
     const handleChange = event =>{
@@ -19,42 +22,61 @@ export const StudentForm = (props) => {
     };
 
     //created eventlistener for submit aka onsubmit
-    const handleSubmit = event => {
-        event.preventDefault();
-        console.log(student)
+    const handleSubmit = async evt => {
+        evt.preventDefault();
+        const newStudent = {
+            firstname,
+            lastname,
+            email
+        };
 
-        setStudents(students => [...students, student])
-        setStudent({
-            // id: '',
-            firstname: '',
-            lastname: '',
-            email:'',
-    
-        })
+        try {
+            const config = {
+                headers: {
+                  authorization: localStorage.getItem("token")
+                }
+            };
+            const body = JSON.stringify(newStudent);
+            console.log(body, config);
+            const res = await axios.post('https://better-professor-app-backend.herokuapp.com/api/students', body, config);
+            console.log(res);
+
+        } catch (err) {
+            console.error(err.response.data);
+        }
     }
 
     //creating form
     return(
-        <form onSubmit={handleSubmit}>
-            {/* <input placeholder='id'/> */}
-            <input placeholder='firstname' 
-                    value={student.firstname}
-                    name="firstname"
-                    //see variable above
-                    onChange={handleChange}/>
-            <input placeholder='lastname' 
-                    value={student.lastname}
-                    name="lastname"
-                    onChange={handleChange}/>
-            <input placeholder='email' 
-                    value={student.email}
-                    type = "email"
-                    name="email"
-                    onChange={handleChange}/>
-            
-            <button type = 'submit'>Submit Information</button>
-            
-        </form>
+        <div className="formBorder">
+            <h1 className="large text-primary">New Student</h1>
+            <p className="lead"><i className="fas fa-user"></i> Create a new student</p>
+            <form onSubmit={evt => handleSubmit(evt)}>
+                <div className="form-group">
+                    <input placeholder='First Name' 
+                        value={student.firstname}
+                        name="firstname"
+                        onChange={handleChange}/>
+                </div>
+
+                <div className="form-group">
+                    <input placeholder='Last Name' 
+                        value={student.lastname}
+                        name="lastname"
+                        onChange={handleChange}/>
+                </div>
+
+                <div className="form-group">
+                    <input placeholder='Email' 
+                        value={student.email}
+                        type = "email"
+                        name="email"
+                        onChange={handleChange}/>
+                </div>
+
+                <input type="submit" className="btn btn-primary" value="Create Student" />
+            </form>
+        </div>
     );
 
 }

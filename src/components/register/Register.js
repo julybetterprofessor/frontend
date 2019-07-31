@@ -37,7 +37,7 @@ const Register = () => {
             console.error(err.response.data);
         }
     }
-    // 
+
     return (
         <div className="formBorder">
             <h1 className="large text-primary">Sign Up</h1>
