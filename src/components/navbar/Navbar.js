@@ -10,10 +10,10 @@ const Navbar = ({ isAuthenticated }) => (
     <div className="root">
         <AppBar color="inherit" position="static">
             <Toolbar className="toolbar">
-                <Link to="">
-                    <Typography edge="start" variant="h6" className="towel">
+                <Link to={isAuthenticated ? '/dashboard' : '/'}>
+                    <h2>
                         BetterProfessor
-                    </Typography>
+                    </h2>
                 </Link>
 
                 <div>
