@@ -1,16 +1,16 @@
-import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, withRouter } from 'react-router-dom';
 import axios from 'axios';
 
-const SignIn = ({setAuth}) => {
+const SignIn = ({ setAuth, history }) => {
     const [inputUser, setInputUser] = useState({
         username: '',
         password: ''
     });
 
-    const {username, password} = inputUser;
+    const { username, password } = inputUser;
 
-    const handleChange = evt => setInputUser({...inputUser, [evt.target.name]: evt.target.value});
+    const handleChange = evt => setInputUser({ ...inputUser, [evt.target.name]: evt.target.value });
 
     const handleSubmit = async evt => {
         evt.preventDefault();
@@ -22,9 +22,10 @@ const SignIn = ({setAuth}) => {
                 }
             };
             const body = JSON.stringify(user);
-            const {data} = await axios.post('https://better-professor-app-backend.herokuapp.com/api/login', body, config);
+            const { data } = await axios.post('https://better-professor-app-backend.herokuapp.com/api/login', body, config);
             localStorage.setItem('token', data.token);
             setAuth(true);
+            history.push('/dashboard');
         } catch (err) {
             console.error(err);
         }
@@ -34,12 +35,12 @@ const SignIn = ({setAuth}) => {
         <div className="formBorder">
             <h1 className="large text-primary">Log In</h1>
             <p>
-                Sign in below to access your dashboard. Don’t have an account yet? 
+                Sign in below to access your dashboard. Don’t have an account yet?
                 <Link className="createAcc" to='/register' > Create one here.</Link>
             </p>
             <form className="form" onSubmit={evt => handleSubmit(evt)}>
                 <div className="form-group">
-                    <input 
+                    <input
                         name="username"
                         type="text"
                         placeholder="Enter Username"
@@ -48,7 +49,7 @@ const SignIn = ({setAuth}) => {
                         required />
                 </div>
                 <div className="form-group">
-                    <input 
+                    <input
                         className="form-group"
                         name="password"
                         type="password"
@@ -63,4 +64,4 @@ const SignIn = ({setAuth}) => {
     );
 };
 
-export default SignIn;
+export default withRouter(SignIn);

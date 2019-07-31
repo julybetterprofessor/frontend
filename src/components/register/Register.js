@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import './Register.sass';
 
-const Register = () => {
+const Register = ({ history }) => {
     const [formData, setFormData] = useState({
         username: '',
         password: ''
@@ -31,7 +32,7 @@ const Register = () => {
 
             const body = JSON.stringify(newUser);
             const res = await axios.post('https://better-professor-app-backend.herokuapp.com/api/register', body, config);
-            console.log(res);
+            history.push('/dashboard');
 
         } catch (err) {
             console.error(err.response.data);
@@ -68,4 +69,4 @@ const Register = () => {
     );
 };
 
-export default Register;
+export default withRouter(Register);
