@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 
 //map over this card for Student INFO
-const StudentCard = (props) =>{
+const EditCard = (props) =>{
     const { student } = props
     return (
         <div>
@@ -15,4 +15,4 @@ const StudentCard = (props) =>{
     );
 }
 
-export default StudentCard
+export default EditCard

@@ -8,7 +8,6 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import './Dashboard.sass';
 
-
 const Dashboard = () => {
     const [students, setStudents] = useState([]);
 
@@ -39,6 +38,7 @@ const Dashboard = () => {
                     </CardContent>
                     <CardActions>
                         <Button size="small">See {firstname}</Button>
+                        <Button size="small"><Link to={`/edit/${id}`}>Edit</Link></Button>
                     </CardActions>
                 </Card>
             ))}
