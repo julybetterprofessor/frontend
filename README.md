@@ -59,6 +59,10 @@ https://log-in-better-professor.netlify.com/signin
 
 https://log-in-better-professor.netlify.com/dashboard
 
+## Add Student -POST
+
+https://log-in-better-professor.netlify.com/dashboard
+
 ## Edit Student -POST
 
 https://log-in-better-professor.netlify.com/edit/:id
