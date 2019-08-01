@@ -64,8 +64,8 @@ https://log-in-better-professor.netlify.com/dashboard
 https://log-in-better-professor.netlify.com/edit/:id
 
 ## Support
-GITHUB: https://github.com/LambdaSchool 
-email: jyoojs@gmail.com
+- GITHUB: https://github.com/LambdaSchool 
+- email: jyoojs@gmail.com
 
 ## Authors and acknowledgment
 Shout out to Louie Williford and Teddy Ngo!!
