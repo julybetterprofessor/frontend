@@ -31,6 +31,7 @@ This project was created using yarn and designed for react client side. Other de
 ```
 
 Examples of Tables
+```
 User table {
 
 id <-- Required
@@ -41,6 +42,7 @@ password <-- Required }
 Usage
 EndPoints
 User
+```
 
 ## Register a user - POST
 
