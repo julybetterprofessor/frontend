@@ -6,6 +6,7 @@ import { StudentApp } from "./components/Students/StudentApp";
 import Dashboard from './components/dashboard/Dashboard';
 import Navbar from './components/navbar/Navbar';
 import SignIn from './components/signin/SignIn';
+import { EditApp } from './components/editStudent/EditApp'
 import './App.sass';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route exact path='/studentform' component = {StudentApp}/>
         <Route exact path='/signin' render={() => <SignIn setAuth={setIsAuthenticated} />} />
         <Route exact path='/dashboard' component={Dashboard} />
+        <Route exact path='/edit/:id' component={EditApp}/>
       </Switch>
     </div>
   );
