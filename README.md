@@ -6,6 +6,11 @@ This app allows the user to make an account, sign in, and track students. Users 
 Getting Started
 For an example of how to implement this code on the client side see the link below: https://github.com/julybetterprofessor/frontend
 
+Please use: 
+username: louser
+password: password
+if you have trouble logging in and want to see the Dashboard
+
 Prerequisites
 All of the below dependencies can be installed using:
 yarn add < name_of_dependency >
